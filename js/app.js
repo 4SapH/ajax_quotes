@@ -1,3 +1,13 @@
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+let colors = [];
+
+let handleColors = () => colors[getRandomInt(0, 5)];
+
 $(function () {
   $.ajaxSetup({
     cache: false,
@@ -5,9 +15,9 @@ $(function () {
       alert("error");
     }
   });
-  Pictures.init();
-  // Colors.init();
-  Quotes.init();
+  Colors.getColors();
+  // Pictures.init();
+  // Quotes.init();
 });
 
 // unsplash:

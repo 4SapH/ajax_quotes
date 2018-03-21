@@ -2,6 +2,8 @@ let Quotes = (function () {
 
   // DOM
 
+  let colors = [];
+
   let dom = {};
 
   function cacheDom() {
@@ -34,6 +36,7 @@ let Quotes = (function () {
   let first = true;
 
   function renderQuote(response) {
+    // dom.$inspire.style.background = "";
     if (first) {
       dom.$quoteTitle.text(response[0].title);
       dom.$quoteText.html(response[0].content);

@@ -1,27 +1,32 @@
 let Colors = (function () {
 
+  // DOM
+
+  // let dom = {};
+  let $img;
+
+  function cacheDom() {
+    $img = document.querySelector('#testImage');
+  }
+
   let colors = [];
 
-  let api = {
-    endpoint: 'https://pictaculous.com/api/1.0/',
-    params: {
-      image: 'https://images.unsplash.com/photo-1495979830471-67a0decaa1cc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjIxNTIyfQ&s=a4a5488765c3f3661955e6d17e195dcf.png',
-    }
-  }
+  function getColors() {
+    cacheDom();
 
-  function handleColors(data) {
-    colors = data.colors;
-    console.log(colors);
-  }
-
-  function init() {
-    $.get(api.endpoint, api.params, handleColors,'json');
-
-    Quotes.init();
-  }
+    let colorThief = new ColorThief();
+    // dom.$img.src = picLink;
+    let $img = new Image();
+    $img.crossOrigin = "Anonymous";
+    $img.setAttribute('crossOrigin', '');
+    $img.src = "https://images.unsplash.com/photo-1507202149208-29670519ac08?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjIxNTIyfQ&s=d2d0b77c7ab4c14f1d5ed3634e8451ab";
+    console.log(colorThief.getPalette($img, 5));
+    //colors = colorThief.getPalette(dom.$img, 5);
+    //console.log(colors);
+  };
 
   return {
-    init: init,
+    getColors: getColors
   };
 
 })();
